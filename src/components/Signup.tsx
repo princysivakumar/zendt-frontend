@@ -1,53 +1,163 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import type { FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import AuthBackground from "./AuthBackground";
+import { requestSignup, verifyTwoFactor } from "../services/auth";
+
+type SignupPhase = "form" | "twoFactor";
 
 export default function Signup() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phase, setPhase] = useState<SignupPhase>("form");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [twoFactorToken, setTwoFactorToken] = useState("");
+  const [twoFactorCode, setTwoFactorCode] = useState("");
+  const [twoFactorHint, setTwoFactorHint] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignup = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!firstName || !lastName || !email || !password) {
+      setError("Fill out all fields to continue.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError("");
+      const response = await requestSignup({ firstName, lastName, email, password });
+      setTwoFactorToken(response.twoFactorToken);
+      setTwoFactorHint(response.demoCode ?? "Check your email for the code.");
+      setPhase("twoFactor");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Signup failed.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleTwoFactor = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!twoFactorCode.trim()) {
+      setError("Enter the verification code.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError("");
+      await verifyTwoFactor({ twoFactorToken, code: twoFactorCode });
+      navigate("/dashboard/home");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Verification failed.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <AuthBackground>
+    <AuthBackground showNavigation={false}>
       <div className="w-full max-w-xs mx-auto">
+        <h2 className="text-center text-2xl font-light mb-12">
+          {phase === "form" ? "Sign up" : "Verify your account"}
+        </h2>
 
-        <h2 className="text-center text-2xl font-light mb-12">Sign up</h2>
+        {phase === "form" ? (
+          <form onSubmit={handleSignup} className="space-y-6 mb-4">
+            <input
+              placeholder="First name"
+              value={firstName}
+              onChange={(event) => setFirstName(event.target.value)}
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+            />
+            <input
+              placeholder="Last name"
+              value={lastName}
+              onChange={(event) => setLastName(event.target.value)}
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+            />
+            <input
+              placeholder="E-mail"
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+            />
+            <input
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+            />
 
-        <input placeholder="First name"
-          className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3 mb-6"
-        />
-        <input placeholder="Last name"
-          className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3 mb-6"
-        />
-        <input placeholder="E-mail id"
-          className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3 mb-6"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3 mb-6"
-        />
-        <input
-          type="password"
-          placeholder="Use Password"
-          className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3 mb-10"
-        />
+            {error && <p className="text-xs text-red-400">{error}</p>}
 
-        
+            <div className="flex justify-between items-center">
+              <button
+                type="submit"
+                disabled={loading}
+                className="flex items-center justify-between bg-black text-white border border-gray-600 rounded-full py-0.5 pl-2 pr-0.5 w-32 disabled:opacity-50"
+              >
+                <span className="text-sm">{loading ? "..." : "Signup"}</span>
+                <span className="w-7 h-7 bg-gray-300 text-black rounded-full flex items-center justify-center text-sm">
+                  ➜
+                </span>
+              </button>
 
+              <div className="text-right text-xs text-gray-400">
+                Already have account?{" "}
+                <Link to="/login" className="text-white underline">
+                  Login
+                </Link>
+              </div>
+            </div>
+          </form>
+        ) : (
+          <form onSubmit={handleTwoFactor} className="space-y-6 mb-4">
+            <p className="text-sm text-white/70">
+              Enter the 6-digit code. {twoFactorHint && <span>Use code {twoFactorHint} for demo.</span>}
+            </p>
+            <input
+              value={twoFactorCode}
+              onChange={(event) => setTwoFactorCode(event.target.value)}
+              type="text"
+              maxLength={6}
+              placeholder="123456"
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+            />
+            {error && <p className="text-xs text-red-400">{error}</p>}
+            <div className="flex justify-between items-center">
+              <button
+                type="submit"
+                disabled={loading}
+                className="flex items-center justify-between bg-black text-white border border-gray-600 rounded-full py-0.5 pl-2 pr-0.5 w-32 disabled:opacity-50"
+              >
+                <span className="text-sm">{loading ? "..." : "Verify"}</span>
+                <span className="w-7 h-7 bg-gray-300 text-black rounded-full flex items-center justify-center text-sm">
+                  ✓
+                </span>
+              </button>
+              <button
+                type="button"
+                className="text-xs text-gray-400 underline"
+                onClick={() => {
+                  setPhase("form");
+                  setTwoFactorCode("");
+                  setTwoFactorToken("");
+                }}
+              >
+                Edit signup details
+              </button>
+            </div>
+          </form>
+        )}
 
-        <div className=" flex justify-between items-center">
-  <button
-  className="flex items-center justify-between bg-black text-white border border-gray-600 rounded-full py-0.5 pl-2 pr-0.5 w-32">
-  <span className="text-sm">Signup</span>
-  <span className="w-7 h-7 bg-gray-300 text-black rounded-full flex items-center justify-center text-sm">
-    ➜
-  </span>
-</button>
-
-
-        <div className="text-right text-xs text-gray-400">
-          Already have account?{" "}
-          <Link to="/signup" className="text-white underline">
-         login
-          </Link>
-        </div>
-</div>
+        <p className="text-center text-xs text-gray-500 mt-4">Need any help?</p>
       </div>
     </AuthBackground>
   );

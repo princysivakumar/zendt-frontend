@@ -1,0 +1,183 @@
+import { useState } from "react";
+import BackButton from "./BackButton";
+import PageContainer from "./PageContainer";
+import ToggleCheckbox from "./ToggleCheckbox";
+
+const countryOptions = ["United States", "India", "United Arab Emirates"];
+const purposeCodes = ["Consulting", "Services", "Merchandise"];
+
+export default function AddClientPage() {
+  const [type, setType] = useState<"individual" | "company">("individual");
+  const [form, setForm] = useState({
+    payerName: "",
+    email: "",
+    country: "",
+    purposeCode: "",
+    address: "",
+    companyName: "",
+    companyWebsite: "",
+  });
+  const [allowPartial, setAllowPartial] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange =
+    (key: keyof typeof form) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm({ ...form, [key]: event.target.value });
+    };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <PageContainer className="text-white space-y-6">
+      <div className="flex items-center justify-between">
+        <BackButton />
+        <div className="rounded-2xl border border-white/15 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
+          Add client
+        </div>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 rounded-[36px] border border-white/10 bg-[#0f0f13]/90 p-6 shadow-[0_25px_45px_rgba(4,4,7,0.55)]"
+      >
+        <div className="flex rounded-[32px] border border-white/15 overflow-hidden w-full max-w-sm">
+          {(["individual", "company"] as const).map((option) => (
+            <button
+              type="button"
+              key={option}
+              onClick={() => setType(option)}
+              className={[
+                "flex-1 py-2 text-sm transition",
+                type === option ? "bg-white/10 text-white" : "text-white/60",
+              ].join(" ")}
+            >
+              {option === "individual" ? "Individual" : "Company"}
+            </button>
+          ))}
+        </div>
+
+        <Field label="Payer name">
+          <input
+            value={form.payerName}
+            onChange={handleChange("payerName")}
+            placeholder="Enter payer name"
+            className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+          />
+        </Field>
+
+        <Field label="E-mail">
+          <input
+            type="email"
+            value={form.email}
+            onChange={handleChange("email")}
+            placeholder="Enter email"
+            className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+          />
+        </Field>
+
+        <Field label="Country">
+          <select
+            value={form.country}
+            onChange={(event) => setForm({ ...form, country: event.target.value })}
+            className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white pr-8 focus:outline-none"
+          >
+            <option value="" hidden>
+              Select country
+            </option>
+            {countryOptions.map((c) => (
+              <option key={c} value={c} className="text-black">
+                {c}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        <Field label="Purpose code">
+          <select
+            value={form.purposeCode}
+            onChange={(event) => setForm({ ...form, purposeCode: event.target.value })}
+            className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white pr-8 focus:outline-none"
+          >
+            <option value="" hidden>
+              Select
+            </option>
+            {purposeCodes.map((code) => (
+              <option key={code} value={code} className="text-black">
+                {code}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        <Field label="Purpose address">
+          <textarea
+            value={form.address}
+            onChange={handleChange("address")}
+            rows={3}
+            placeholder="Enter payer address"
+            className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+          />
+        </Field>
+
+        {type === "company" && (
+          <>
+            <Field label="Company name">
+              <input
+                value={form.companyName}
+                onChange={handleChange("companyName")}
+                placeholder="Enter company name"
+                className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+              />
+            </Field>
+
+            <Field label="Company website">
+              <input
+                value={form.companyWebsite}
+                onChange={handleChange("companyWebsite")}
+                placeholder="Enter company website"
+                className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+              />
+            </Field>
+          </>
+        )}
+
+        <label className="flex items-center gap-3 text-sm text-white/80">
+          <ToggleCheckbox checked={allowPartial} onChange={setAllowPartial} size="sm" />
+          <span>Allow alternate reminders</span>
+        </label>
+
+        {submitted && (
+          <p className="text-sm text-emerald-300">Client saved successfully.</p>
+        )}
+
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="w-full rounded-[28px] border border-white/20 bg-white/10 py-2 text-sm text-white hover:bg-white/20 md:w-40"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </PageContainer>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="flex flex-col gap-2 text-sm text-white/70">
+      {label}
+      {children}
+    </label>
+  );
+}
+
+declare module "react" {
+  interface HTMLAttributes<T> {
+    className?: string;
+  }
+}
