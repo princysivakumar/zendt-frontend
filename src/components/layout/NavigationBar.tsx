@@ -49,7 +49,7 @@ export default function NavigationBar({ className, centerContent }: NavigationBa
           {open && (
             <div
               ref={drawerRef}
-              className="absolute left-0 mt-3 w-64 rounded-3xl  p-4 shadow-2xl bg-black overflow-hidden"
+              className="absolute left-0 mt-3 w-64 rounded-3xl  p-4 shadow-2xl bg-black overflow-hidden "
             >
                       <div                      className="absolute blur-2xl -z-10"
                 style={{
@@ -57,7 +57,7 @@ export default function NavigationBar({ className, centerContent }: NavigationBa
                   top: "0px",
                   width: "321px",
                   height: "262px", zIndex: "0",
-                  
+                  opacity: '50%',
                   background:
                     "radial-gradient(50% 50% at 50% 50%, rgba(255,173,122,0.40) 0%, rgba(93,104,157,0.40) 58.08%, rgba(20,35,55,0.40) 200%)",
                 }}></div>

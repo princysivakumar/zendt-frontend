@@ -13,7 +13,7 @@ export default function BusinessProfilePage() {
   return (
     <PageContainer className="text-white space-y-6">
       <div className="flex items-center justify-between">
-        <div className="flex items-center justify-between px-4 pt-6 z-0 w-full">
+        <div className="flex items-center justify-between px-4 pt-12 z-0 w-full">
           <div
             className="absolute opacity-60 blur-2xl -z-10"
             style={{
@@ -40,7 +40,7 @@ export default function BusinessProfilePage() {
       <div className="pt-6 relative rounded-t-3xl pb-18 px-4 bg-black z-1">
         <div className="space-y-6">
         <div className="mx-auto w-full max-w-[480px]">
-          <div className="rounded-[28px] bg-[#0d0d0f] p-6 shadow-[0_24px_45px_rgba(6,6,9,0.5)] relative overflow-hidden">
+          <div className="rounded-[28px] bg-black p-6 shadow-[0_24px_45px_rgba(6,6,9,0.5)] relative overflow-hidden">
             <div className="flex items-start gap-4">
               <div className="relative">
                 <div className="h-[129px] w-[129px] rounded-[28px] overflow-hidden bg-black/60 mx-auto">
@@ -81,7 +81,7 @@ export default function BusinessProfilePage() {
               {socials.map((social) => (
                 <div
                   key={social.platform}
-                  className="flex items-center justify-between rounded-2xl bg-black/40 px-4 py-3 text-sm"
+                  className="flex items-center justify-between rounded-2xl bg-[#1E1E1E] px-4 py-3 text-sm"
                 >
                   <span>{social.platform}</span>
                   <span>{social.handle}</span>

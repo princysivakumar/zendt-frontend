@@ -59,7 +59,7 @@ export default function Login() {
 
   return (
     <AuthBackground showNavigation={false}>
-      <div className="flex min-h-screen w-full items-end justify-center pb-5">
+      <div className="flex min-h-screen w-full items-end justify-center pb-5 overflow-y-scroll no-scrollbar">
         <div className="w-full max-w-xs mx-auto">
           <h2 className="text-center text-[20px] font-light mb-8">
             {phase === "credentials" ? "Login" : "Two-factor authentication"}

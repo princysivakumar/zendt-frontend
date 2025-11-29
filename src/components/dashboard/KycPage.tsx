@@ -10,7 +10,7 @@ const steps = [
 export default function KycPage() {
   return (
     <PageContainer className="text-white space-y-6">
-           <div className="flex items-center justify-between px-4 pt-6 z-0">
+           <div className="flex items-center justify-between px-4 pt-12 z-0">
              <div                      className="absolute opacity-60 blur-2xl -z-10"
                      style={{
                        right: "82px",
@@ -24,7 +24,7 @@ export default function KycPage() {
             <div className="flex justify-between w-full z-1"><BackButton /></div>
            </div>
 
-      <section className="relative  rounded-[32px] bg-[#101014]/95  shadow-[0_35px_65px_rgba(4,4,7,0.55)] p-6 space-y-6">
+      <section className="relative  rounded-[32px] bg-black h-full shadow-[0_35px_65px_rgba(4,4,7,0.55)] p-6 space-y-6">
         <header className="space-y-2">
           <h2 className="text-[17px] font-light">Verification / KYC</h2>
           <p className="text-sm text-white/70">
@@ -34,7 +34,7 @@ export default function KycPage() {
 
         <div className="space-y-4">
           {steps.map((step, index) => (
-            <div key={step.title} className="rounded-3xl  bg-black/40 p-4">
+            <div key={step.title} className="rounded-3xl  bg-[#1E1E1E] p-4">
               <div className="flex items-center justify-between text-sm text-white/70">
                 <span>Step {index + 1}</span>
                 <span>Pending</span>

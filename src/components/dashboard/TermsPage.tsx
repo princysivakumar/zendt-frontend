@@ -6,7 +6,7 @@ const paragraphs = new Array(4).fill(`Lorem ipsum dolor sit amet, consectetur ad
 export default function TermsPage() {
   return (
     <PageContainer>
-           <div className="flex items-center justify-between px-4 pt-6 z-0">
+           <div className="flex items-center justify-between px-4 pt-12 z-0">
              <div                      className="absolute opacity-60 blur-2xl -z-10"
                      style={{
                        right: "82px",

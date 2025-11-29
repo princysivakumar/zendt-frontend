@@ -18,7 +18,7 @@ export default function ProfileHub() {
 
   return (
     <PageContainer className="text-white mb-4">
-          <div className="flex items-center justify-between px-4 pt-6 z-0">
+          <div className="flex items-center justify-between px-4 pt-12 z-0">
             <div                      className="absolute opacity-60 blur-2xl -z-10"
                     style={{
                       right: "82px",
@@ -32,10 +32,10 @@ export default function ProfileHub() {
            <div className="flex justify-between w-full z-1"><BackButton /></div>
           </div>
       <div className="mx-auto w-full max-w-[480px]">
-        <div className="rounded-t-[48px] bg-[#0d0d0f] p-6 shadow-[0_24px_45px_rgba(6,6,9,0.5)] z-1 relative overflow-hidden">
+        <div className="rounded-t-[48px] bg-black p-6 shadow-[0_24px_45px_rgba(6,6,9,0.5)] z-1 relative overflow-hidden">
           <div className="flex items-start gap-4">
             <div className="relative">
-              <div className="h-[140px] w-[140px] rounded-[28px] overflow-hidden bg-black/60">
+              <div className="h-[140px] w-[140px] rounded-full overflow-hidden bg-black/60">
                 <img src={avatarSrc} alt="Roberto Augustus" className="h-full w-full object-cover" />
               </div>
               <div className="absolute left-1/2 top-[140px] h-[calc(100%-140px)] w-px -translate-x-1/2 bg-white/15" />

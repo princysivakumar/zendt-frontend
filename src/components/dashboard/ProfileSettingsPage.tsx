@@ -28,7 +28,7 @@ export default function ProfileSettingsPage() {
 
   return (
     <PageContainer className="text-white space-y-6">
-      <div className="flex items-center justify-between px-4 pt-6 z-0">
+      <div className="flex items-center justify-between px-4 pt-12 z-0">
         <div
           className="absolute opacity-60 blur-2xl -z-10"
           style={{
@@ -47,8 +47,8 @@ export default function ProfileSettingsPage() {
         </div>
       </div>
       <div className="p-6 bg-black rounded-t-[32px] pb-18">
-        <div className="relative mb-4 mx-auto flex self-center">
-          <div className="h-[140px] w-[140px] rounded-[28px] overflow-hidden bg-black/60 relative ">
+        <div className="relative mb-4 mx-auto flex justify-center">
+          <div className="h-[140px] w-[140px] rounded-full overflow-hidden bg-black/60 relative ">
             <img
               src={avatarSrc}
               alt="Roberto Augustus"

@@ -10,7 +10,7 @@ const values = [
 export default function AboutPage() {
   return (
     <PageContainer className="text-white space-y-6">
-      <div className="flex items-center justify-between px-4 pt-6 z-0">
+      <div className="flex items-center justify-between px-4 pt-12 z-0">
         <div                      className="absolute opacity-60 blur-2xl -z-10"
                 style={{
                   right: "82px",
@@ -34,7 +34,7 @@ export default function AboutPage() {
 
         <div className="space-y-4">
           {values.map((value) => (
-            <div key={value.title} className="rounded-3xl border border-white/10 bg-black/40 p-4">
+            <div key={value.title} className="rounded-3xl border border-white/10 bg-[#1E1E1E] p-4">
               <p className="text-sm uppercase tracking-[0.3em] text-white/50">{value.title}</p>
               <p className="mt-2 text-base text-white/80">{value.detail}</p>
             </div>

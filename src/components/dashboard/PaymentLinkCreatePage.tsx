@@ -42,7 +42,7 @@ export default function PaymentLinkCreatePage() {
 
   return (
     <PageContainer className="text-white space-y-6">
-      <div className="flex items-center justify-between px-4 pt-6 z-0">
+      <div className="flex items-center justify-between px-4 pt-12 z-0">
         <div                      className="absolute opacity-60 blur-2xl -z-10"
                 style={{
                   right: "82px",
@@ -64,7 +64,7 @@ export default function PaymentLinkCreatePage() {
         <section className="space-y-4 shadow-[0_25px_45px_rgba(4,4,7,0.55)]">
           <h2 className="text-2xl font-semibold">Link created successfully</h2>
           <p className="text-white/70 text-sm">Share this URL with your customer to collect the payment.</p>
-          <div className="rounded-2xl border border-white/20 bg-black/40 px-4 py-3 flex items-center justify-between">
+          <div className="rounded-2xl border border-white/20 bg-[#1E1E1E] px-4 py-3 flex items-center justify-between">
             <span className="truncate text-white/90">{shareableLink}</span>
             <button
               type="button"

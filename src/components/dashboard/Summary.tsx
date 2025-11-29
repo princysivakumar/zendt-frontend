@@ -142,7 +142,7 @@ export default function DashboardSummary() {
         </div>
       )}
 
-      <section className="rounded-[32px] bg-gradient-to-br from-[#0d1017] via-[#11161f] to-[#07080a] p-8 text-left text-white shadow-[0_30px_45px_rgba(4,4,7,0.55)] border border-white/5">
+      <section className="rounded-[19px]  p-8 mb-9 text-left text-white bg-[#161616]">
         <header className="flex flex-col gap-2 mb-6">
           <h3 className="text-xl font-semibold">Recent transaction</h3>
           <div className="flex items-center justify-between text-xs uppercase tracking-[0.35em] text-gray-400">

@@ -19,7 +19,7 @@ const faqs = [
 export default function HelpPage() {
   return (
     <PageContainer className="text-white space-y-6">
-           <div className="flex items-center justify-between px-4 pt-6 z-0">
+           <div className="flex items-center justify-between px-4 pt-12 z-0">
              <div                      className="absolute opacity-60 blur-2xl -z-10"
                      style={{
                        right: "82px",

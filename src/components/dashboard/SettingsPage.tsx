@@ -22,7 +22,7 @@ export default function SettingsPage() {
 
   return (
     <PageContainer className="text-white space-y-6">
-          <div className="flex items-center justify-between px-4 pt-6 z-0">
+          <div className="flex items-center justify-between px-4 pt-12 z-0">
             <div                      className="absolute opacity-60 blur-2xl -z-10"
                     style={{
                       right: "82px",
@@ -36,7 +36,7 @@ export default function SettingsPage() {
           <div className="flex justify-between w-full z-1"><BackButton /></div>
           </div>
 
-      <section className="pt-6 relative rounded-3xl px-4 bg-black z-1">
+      <section className="pt-6 relative rounded-3xl px-4 bg-black z-1 h-full">
         <header className="mb-6">
           <h2 className="text-[17px] font-light">Settings</h2>
           <p className="text-white/70 text-sm mt-1">Control notifications and automation preferences for your workspace.</p>

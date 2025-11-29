@@ -87,7 +87,7 @@ export default function Dashboard() {
     location.pathname === "/dashboard";
 
   return (
-    <div className="min-h-screen w-full bg-[#141414] text-white">
+    <div className="min-h-screen w-full bg-black text-white overflow-y-scroll no-scrollbar">
       {showNavigationBar && (
         <div className="mx-auto w-full max-w-4xl px-4 pt-8">
           <NavigationBar className="w-full" centerContent={<DashboardDesktopNav />} />
