@@ -49,7 +49,7 @@ export default function VirtualAccountPage() {
 
       <div className="space-y-2">
         <p className="text-xs text-white">Select currency</p>
-        <div className="flex items-center justify-between rounded-[14px] bg-[#0f0f11] px-4 py-3 mb-4">
+        <div className="flex items-center justify-between rounded-[14px] bg-[#1E1E1E] px-4 py-3 mb-4">
           <div className="flex items-center gap-3">
             <img
               src={currency.flag}

@@ -102,8 +102,8 @@ export default function DashboardSummary() {
         <DoubleBgBox className="justify-between">
           <div className="text-left text-white space-y-2">
             <div className="leading-tight">
-              <p className="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-white/70">Current</p>
-              <p className="text-xl sm:text-2xl font-semibold tracking-[0.08em]">Balance</p>
+              <p className="text-[11px] sm:text-xs uppercase tracking-[0.2em] ">Current</p>
+              <p className="text-lg sm:text-2xl font-semibold tracking-[0.08em]">Balance</p>
             </div>
             <p className="text-lg sm:text-2xl font-semibold">Rs 1,00,000</p>
           </div>
@@ -122,14 +122,14 @@ export default function DashboardSummary() {
           className="text-left w-full"
         >
           <DoubleBgBox className="justify-between">
-            <div className="text-left text-white space-y-2 pt-[26px]">
+            <div className="text-left text-white space-y-2 pt-[13px]">
               <div className="leading-tight">
-                <p className="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-white/70">Last</p>
-                <p className="text-xl sm:text-2xl font-semibold tracking-[0.08em]">Settlement</p>
+                <p className="text-[11px] sm:text-xs uppercase tracking-[0.2em] ">Last</p>
+                <p className="text-lg sm:text-2xl font-semibold tracking-[0.08em]">Settlement</p>
               </div>
               <div className="space-y-1">
-                <p className="text-lg sm:text-2xl font-semibold">$24,000</p>
-                <p className="text-[10px] sm:text-xs tracking-[0.08em] text-white/60 uppercase">Deposited on July 10th</p>
+                <p className="text-[14px] sm:text-2xl font-semibold">$24,000</p>
+                <p className="text-[7px] sm:text-xs tracking-[0.08em] text-white/60 uppercase">Deposited on July 10th</p>
               </div>
             </div>
           </DoubleBgBox>

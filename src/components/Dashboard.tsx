@@ -1,32 +1,59 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import type { LucideIcon } from "lucide-react";
-import { Compass, CreditCard, LayoutDashboard, UserRound, Wallet } from "lucide-react";
 import NavigationBar from "./layout/NavigationBar";
 
 type TabDefinition = {
   to: string;
   label: string;
-  icon: LucideIcon;
+  icon: string;
+  iconHighlighted: string;
 };
 
 const tabs: TabDefinition[] = [
-  { to: "home", label: "Dashboard", icon: LayoutDashboard },
-  { to: "card-management", label: "Cards", icon: CreditCard },
-  { to: "profile", label: "Profile", icon: UserRound },
-  { to: "virtual-account", label: "Virtual", icon: Wallet },
-  { to: "explore", label: "Explore", icon: Compass },
+  {
+    to: "home",
+    label: "Dashboard",
+    icon: "/dashboard.png",
+    iconHighlighted: "/dashboard-highlighted.png",
+  },
+  {
+    to: "card-management",
+    label: "Cards",
+    icon: "/card.png",
+    iconHighlighted: "/card-highlighted.png",
+  },
+  {
+    to: "profile",
+    label: "Profile",
+    icon: "/profile.png",
+    iconHighlighted: "/profile-highlighted.png",
+  },
+  {
+    to: "virtual-account",
+    label: "Virtual",
+    icon: "/virtual.png",
+    iconHighlighted: "/virtual-highlighted.png",
+  },
+  {
+    to: "explore",
+    label: "Explore",
+    icon: "/explore.png",
+    iconHighlighted: "/explore-highlighted.png",
+  },
 ];
 
 function DashboardDesktopNav() {
+  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+
   return (
     <nav className="flex items-center gap-1">
       {tabs.map((tab) => {
-        const Icon = tab.icon;
         return (
           <NavLink
             key={tab.to}
             to={`/dashboard/${tab.to}`}
+            onMouseEnter={() => setHoveredTab(tab.to)}
+            onMouseLeave={() => setHoveredTab(null)}
             className={({ isActive }) =>
               [
                 "flex items-center gap-2 text-sm px-3 py-2 rounded-[20px] transition focus-visible:outline-none",
@@ -34,8 +61,19 @@ function DashboardDesktopNav() {
               ].join(" ")
             }
           >
-            <Icon className="h-5 w-5" strokeWidth={1} />
-            <span>{tab.label}</span>
+            {({ isActive }) => (
+              <>
+                <img
+                  src={
+                    isActive || hoveredTab === tab.to
+                      ? tab.iconHighlighted
+                      : tab.icon
+                  }
+                  className="h-5 w-5 object-contain"
+                />
+                <span>{tab.label}</span>
+              </>
+            )}
           </NavLink>
         );
       })}
@@ -45,10 +83,9 @@ function DashboardDesktopNav() {
 
 function DashboardMobileNav() {
   return (
-    <div className="fixed bottom-4 left-1/2 z-40 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 md:hidden">
-      <div className="pointer-events-auto flex justify-center items-center h-auto gap-1 p-1 bg-[#242424]/95 rounded-full font-normal whitespace-nowrap shadow-[0_24px_45px_rgba(6,6,9,0.4)] backdrop-blur">
+    <div className="fixed bottom-4 left-1/2 z-40 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 h-[58px] md:hidden">
+      <div className="pointer-events-auto flex justify-center items-center h-auto gap-1 p-1 bg-[#1F1F1F]/95 rounded-full font-normal whitespace-nowrap shadow-[0_24px_45px_rgba(6,6,9,0.4)] backdrop-blur">
         {tabs.map((tab) => {
-          const Icon = tab.icon;
           return (
             <NavLink
               key={tab.to}
@@ -61,7 +98,12 @@ function DashboardMobileNav() {
                 ].join(" ")
               }
             >
-              <Icon className="h-6 w-6 " strokeWidth={1.7} />
+              {({ isActive }) => (
+                <img
+                  src={isActive ? tab.iconHighlighted : tab.icon}
+                  className="h-6 w-6 object-contain"
+                />
+              )}
             </NavLink>
           );
         })}
@@ -80,6 +122,24 @@ export default function Dashboard() {
   }, []);
 
   const location = useLocation();
+
+  // 🔹 Initialize from navigation state ONCE (no effect needed for this)
+  const navigationState = location.state as { showKycToast?: boolean } | null;
+  const [showKycToast, setShowKycToast] = useState(
+    !!navigationState?.showKycToast,
+  );
+
+  // 🔹 Auto-hide the toast after 5 seconds when it's visible
+  useEffect(() => {
+    if (!showKycToast) return;
+
+    const timer = setTimeout(() => {
+      setShowKycToast(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [showKycToast]);
+
   const showNavigationBar =
     location.pathname.startsWith("/dashboard/home") ||
     location.pathname.startsWith("/dashboard/card-management") ||
@@ -88,6 +148,17 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen w-full bg-black text-white overflow-y-scroll no-scrollbar">
+      {/* 🔹 Small top-right toast */}
+      {showKycToast && (
+        <div className="fixed flex  items-center right-4 top-4 z-1000 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs text-white shadow-lg backdrop-blur">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-circle-alert-icon lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+         <div className="ml-2"> <span className="font-medium">Complete your KYC</span>
+          <div className="mt-1 text-[11px] text-gray-300">
+            Please complete your KYC to unlock all features.
+          </div></div> 
+        </div>
+      )}
+
       {showNavigationBar && (
         <div className="mx-auto w-full max-w-4xl px-4 pt-8">
           <NavigationBar className="w-full" centerContent={<DashboardDesktopNav />} />

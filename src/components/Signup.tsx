@@ -51,7 +51,7 @@ export default function Signup() {
       setLoading(true);
       setError("");
       await verifyTwoFactor({ twoFactorToken, code: twoFactorCode });
-      navigate("/dashboard/home");
+      navigate("/dashboard/home", { state: { showKycToast: true } });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Verification failed.");
     } finally {
