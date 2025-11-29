@@ -36,9 +36,9 @@ export default function VirtualAccountPage() {
                 }}></div>
        <div className="flex justify-between w-full z-1"><BackButton /></div>
       </div>
-    <div className="pt-6 relative rounded-3xl px-4 bg-black z-1">
+    <div className="pt-6 relative rounded-t-3xl px-4 pb-14 bg-black z-1">
       <div className="flex justify-between items-center">
-              <h1 className="text-lg font-light tracking-[0.01em] mb-4">
+              <h1 className="text-[18px] font-light tracking-[0.01em] mb-4">
         My Virtual Account
       </h1>
                 <button className="flex items-center gap-3 rounded-md bg-[#1d1d1f] px-2 text-sm">

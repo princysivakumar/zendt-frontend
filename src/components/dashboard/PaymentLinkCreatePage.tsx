@@ -12,7 +12,7 @@ function LabeledInput({
   children: React.ReactNode;
 }) {
   return (
-    <label className="flex flex-col gap-2 text-sm text-white/70">
+    <label className="flex flex-col gap-2 text-[10px] text-white/70">
       {label}
       {children}
     </label>
@@ -42,26 +42,26 @@ export default function PaymentLinkCreatePage() {
 
   return (
     <PageContainer className="text-white space-y-6">
-          <div className="flex items-center justify-between px-4 pt-6 z-0">
-            <div                      className="absolute opacity-60 blur-2xl -z-10"
-                    style={{
-                      right: "82px",
-                      top: "-20px",
-                      width: "321px",
-                      height: "262px", zIndex: "0",
-                      
-                      background:
-                        "radial-gradient(50% 50% at 50% 50%, rgba(255,173,122,0.40) 0%, rgba(93,104,157,0.40) 58.08%, rgba(20,35,55,0.40) 200%)",
-                    }}></div>
-           <div className="flex justify-between w-full z-1"><BackButton /></div>
-          </div>
-      <div>
-        <h1 className="text-3xl font-semibold">Create payment link</h1>
-        <p className="text-white/70 text-sm">Collect funds with a branded shareable link.</p>
+      <div className="flex items-center justify-between px-4 pt-6 z-0">
+        <div                      className="absolute opacity-60 blur-2xl -z-10"
+                style={{
+                  right: "82px",
+                  top: "-20px",
+                  width: "321px",
+                  height: "262px", zIndex: "0",
+                  
+                  background:
+                    "radial-gradient(50% 50% at 50% 50%, rgba(255,173,122,0.40) 0%, rgba(93,104,157,0.40) 58.08%, rgba(20,35,55,0.40) 200%)",
+                }}></div>
+         <div className="flex justify-between w-full z-1"><BackButton /></div>
       </div>
+      <div className="bg-black p-6 shadow-[0_25px_45px_rgba(4,4,7,0.55)] space-y-6 rounded-t-[32px] relative z-2">
+        <div>
+          {!linkCreated ? <h1 className="text-[18px] font-semibold">Create payment link</h1> : <div />}
+        </div>
 
       {linkCreated ? (
-        <section className="space-y-4 rounded-[36px] border border-white/10 bg-[#0f0f13]/90 p-6 shadow-[0_25px_45px_rgba(4,4,7,0.55)]">
+        <section className="space-y-4 shadow-[0_25px_45px_rgba(4,4,7,0.55)]">
           <h2 className="text-2xl font-semibold">Link created successfully</h2>
           <p className="text-white/70 text-sm">Share this URL with your customer to collect the payment.</p>
           <div className="rounded-2xl border border-white/20 bg-black/40 px-4 py-3 flex items-center justify-between">
@@ -88,15 +88,15 @@ export default function PaymentLinkCreatePage() {
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="space-y-6 rounded-[36px] border border-white/10 bg-[#0f0f13]/90 p-6 shadow-[0_25px_45px_rgba(4,4,7,0.55)]"
+          className="space-y-6 rounded-t-[36px] shadow-[0_25px_45px_rgba(4,4,7,0.55)]"
         >
           <section className="space-y-4">
-            <h2 className="text-sm uppercase tracking-[0.35em] text-white/60">Amount</h2>
+            <h2 className="text-[10px] uppercase tracking-[0.35em] text-white/60">Amount</h2>
             <div className="flex items-center gap-3">
               <FormSelect
                 value={amountCurrency}
                 onChange={(event) => setAmountCurrency(event.target.value)}
-                className="border-white/20 bg-black/40"
+                className="rounded-[11px] bg-[#1E1E1E]"
               >
                 {["$", "€", "₹"].map((cur) => (
                   <option key={cur} value={cur} className="text-black">
@@ -108,7 +108,7 @@ export default function PaymentLinkCreatePage() {
                 value={amount}
                 onChange={(event) => setAmount(event.target.value)}
                 placeholder="10,000"
-                className="flex-1 rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+                className="flex-1 rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
               />
             </div>
           </section>
@@ -119,29 +119,29 @@ export default function PaymentLinkCreatePage() {
               onChange={(event) => setDescription(event.target.value)}
               rows={3}
               placeholder="Payment description"
-              className="rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+              className=" rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
             />
           </LabeledInput>
 
           <section className="space-y-3">
-            <h2 className="text-sm uppercase tracking-[0.35em] text-white/60">Customer details</h2>
+            <h2 className="text-[10px] uppercase tracking-[0.35em] text-white/60">Customer details</h2>
             <input
               value={customer.name}
               onChange={(event) => setCustomer({ ...customer, name: event.target.value })}
               placeholder="Name"
-              className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+              className="w-full  rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
             />
             <input
               value={customer.email}
               onChange={(event) => setCustomer({ ...customer, email: event.target.value })}
               placeholder="E mail"
-              className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+              className="w-full  rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
             />
             <input
               value={customer.phone}
               onChange={(event) => setCustomer({ ...customer, phone: event.target.value })}
               placeholder="Number"
-              className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+              className="w-full  rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
             />
           </section>
 
@@ -149,7 +149,7 @@ export default function PaymentLinkCreatePage() {
             <input
               value={referenceId}
               onChange={(event) => setReferenceId(event.target.value)}
-              className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+              className="w-full  rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
             />
           </LabeledInput>
 
@@ -158,7 +158,7 @@ export default function PaymentLinkCreatePage() {
               type="date"
               value={expiry}
               onChange={(event) => setExpiry(event.target.value)}
-              className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+              className="w-full  rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
             />
           </LabeledInput>
 
@@ -167,7 +167,7 @@ export default function PaymentLinkCreatePage() {
               value={reminder}
               onChange={(event) => setReminder(event.target.value)}
               placeholder="Alternate days"
-              className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+              className="w-full  rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
             />
           </LabeledInput>
 
@@ -182,18 +182,18 @@ export default function PaymentLinkCreatePage() {
               onChange={(event) => setNotes(event.target.value)}
               rows={3}
               placeholder="description"
-              className="rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white focus:outline-none"
+              className=" rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white text-[10px] focus:outline-none"
             />
           </LabeledInput>
 
           <section className="space-y-2">
-            <p className="text-sm uppercase tracking-[0.35em] text-white/60">Attach invoice</p>
-            <label className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-white/20 bg-black/20 px-4 py-6 text-sm text-white/60">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">Attach invoice</p>
+            <label className="flex flex-col items-center justify-center  border border-dashed border-white/20 bg-black/20 px-4 py-6 text-sm text-white/60">
               <input
                 type="file"
                 className="hidden"
                 onChange={(event) => setInvoiceName(event.target.files?.[0]?.name ?? "")}
-              />
+            />
               {invoiceName ? (
                 <span>{invoiceName}</span>
               ) : (
@@ -205,16 +205,17 @@ export default function PaymentLinkCreatePage() {
             </label>
           </section>
 
-          <div className="flex justify-end">
+          <div className="flex justify-end pb-12">
             <button
               type="submit"
-              className="rounded-[32px] bg-white/10 px-6 py-2 text-sm text-white border border-white/20 hover:bg-white/20"
+              className="rounded-[11px] w-38 bg-[#1E1E1E] px-6 py-2 text-sm text-white hover:bg-white/20"
             >
               Create
             </button>
           </div>
         </form>
       )}
+      </div>
     </PageContainer>
   );
 }

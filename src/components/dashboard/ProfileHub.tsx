@@ -32,7 +32,7 @@ export default function ProfileHub() {
            <div className="flex justify-between w-full z-1"><BackButton /></div>
           </div>
       <div className="mx-auto w-full max-w-[480px]">
-        <div className="rounded-[28px] bg-[#0d0d0f] p-6 shadow-[0_24px_45px_rgba(6,6,9,0.5)] border border-white/5 relative overflow-hidden">
+        <div className="rounded-t-[48px] bg-[#0d0d0f] p-6 shadow-[0_24px_45px_rgba(6,6,9,0.5)] z-1 relative overflow-hidden">
           <div className="flex items-start gap-4">
             <div className="relative">
               <div className="h-[140px] w-[140px] rounded-[28px] overflow-hidden bg-black/60">

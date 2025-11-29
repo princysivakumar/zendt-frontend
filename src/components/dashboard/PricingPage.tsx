@@ -33,7 +33,7 @@ export default function PricingPage() {
             <div className="flex justify-between w-full z-1"><BackButton /></div>
            </div>
 
-      <section className="relative rounded-[40px] bg-[#0b0b0f]/95 border border-white/5 shadow-[0_35px_65px_rgba(4,4,7,0.55)] p-6 space-y-6">
+      <section className="relative rounded-t-[40px] bg-black pb-18 shadow-[0_35px_65px_rgba(4,4,7,0.55)] p-6 space-y-6">
         <header className="text-center space-y-2">
           <h2 className="text-[17px] font-light">Pricing</h2>
           <p className="text-white/70">Choose a plan that matches your payout volume.</p>

@@ -51,7 +51,7 @@ export default function NavigationBar({ className, centerContent }: NavigationBa
               ref={drawerRef}
               className="absolute left-0 mt-3 w-64 rounded-3xl  p-4 shadow-2xl bg-black overflow-hidden"
             >
-                      <div                      className="absolute opacity-60 blur-2xl -z-10"
+                      <div                      className="absolute blur-2xl -z-10"
                 style={{
                   right: "0px",
                   top: "0px",
@@ -83,7 +83,7 @@ export default function NavigationBar({ className, centerContent }: NavigationBa
 
         <Link
           to="/dashboard/profile"
-          className="h-12 w-12 rounded-[18px] overflow-hidden border border-white/10 shadow-lg"
+          className="h-12 w-12 rounded-full overflow-hidden border border-white/10 shadow-lg"
         >
           <img
             src={avatarSrc}

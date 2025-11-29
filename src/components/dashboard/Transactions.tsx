@@ -20,7 +20,7 @@ export default function DashboardTransactions() {
       <div className="rounded-[32px] bg-gradient-to-br from-[#0a0b11] via-[#10131c] to-[#050608] p-10 text-white shadow-[0_30px_45px_rgba(4,4,7,0.6)] border border-white/5">
         <header className="mb-8 flex items-center justify-between">
           <h2 className="text-2xl font-semibold">All transactions</h2>
-          <span className="text-sm uppercase tracking-[0.35em] text-gray-400">
+          <span className="text-xs uppercase tracking-tight text-gray-400">
             This year
           </span>
         </header>

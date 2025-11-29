@@ -37,7 +37,7 @@ export default function BusinessProfilePage() {
 
         </div>
       </div>
-      <div className="pt-6 relative rounded-3xl px-4 bg-black z-1">
+      <div className="pt-6 relative rounded-t-3xl pb-18 px-4 bg-black z-1">
         <div className="space-y-6">
         <div className="mx-auto w-full max-w-[480px]">
           <div className="rounded-[28px] bg-[#0d0d0f] p-6 shadow-[0_24px_45px_rgba(6,6,9,0.5)] relative overflow-hidden">

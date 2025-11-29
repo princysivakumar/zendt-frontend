@@ -32,10 +32,10 @@ export default function EditableDetailsCard({
   };
 
   return (
-    <section className="rounded-[34px] bg-[#101013] text-white p-8 shadow-[0_35px_65px_rgba(4,4,7,0.55)] border border-white/5 space-y-6">
+    <section className="rounded-[19px] mb-6 bg-[#1E1E1E] text-white p-8 shadow-[0_35px_65px_rgba(4,4,7,0.55)]  space-y-6">
       <header className="flex items-center justify-between text-sm">
         <div>
-          <h3 className="text-lg font-light tracking-wide">{title}</h3>
+          <h3 className="text-[17px] font-light tracking-tight">{title}</h3>
           {description && <p className="text-xs text-white/60 mt-1">{description}</p>}
         </div>
         <button
@@ -50,7 +50,7 @@ export default function EditableDetailsCard({
       <div className="space-y-6">
         {fields.map((field) => (
           <fieldset key={field.key} className="space-y-2">
-            <legend className="text-sm uppercase tracking-[0.3em] text-white/70">
+            <legend className="text-[17px] uppercase tracking-tight text-white/70">
               {field.label}
             </legend>
             <input
@@ -58,9 +58,9 @@ export default function EditableDetailsCard({
               value={form[field.key] ?? ""}
               onChange={handleChange(field.key)}
               readOnly={!isEditing}
-              className="w-full bg-transparent text-lg text-white/90 focus:outline-none"
+              className="w-full bg-transparent text-[12px] text-white/90 focus:outline-none"
             />
-            {isEditing && (<div className="h-px bg-linear-to-r from-white/30 via-white/60 to-white/30" />)}
+            <div className="h-[0.2px] bg-white/30" />
           </fieldset>
         ))}
       </div>

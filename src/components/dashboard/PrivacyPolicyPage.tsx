@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
                      }}></div>
            <div className="flex justify-between w-full z-1"><BackButton /></div>
            </div>
-      <div className="relative rounded-[40px] bg-[#0f0f11]/90 text-white shadow-[0_35px_65px_rgba(4,4,7,0.55)] border border-white/5 overflow-hidden">
+      <div className="relative rounded-t-[40px] bg-black text-white shadow-[0_35px_65px_rgba(4,4,7,0.55)] overflow-hidden">
         <div className="p-6 space-y-6">
           <h2 className="text-[17px] font-light">Privacy policy</h2>
           <div className="space-y-4 text-sm leading-relaxed text-white/80">

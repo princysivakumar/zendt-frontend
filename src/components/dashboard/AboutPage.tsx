@@ -24,7 +24,7 @@ export default function AboutPage() {
          <div className="flex justify-between w-full z-1"><BackButton /></div>
       </div>
 
-      <section className="relative rounded-[40px] bg-[#111116]/95 border border-white/5 shadow-[0_35px_65px_rgba(4,4,7,0.55)] p-6 space-y-6">
+      <section className="relative rounded-t-[40px] bg-black shadow-[0_35px_65px_rgba(4,4,7,0.55)] p-6 space-y-6">
         <header className="space-y-2">
           <h2 className="text-[17px] font-light">About Zendt</h2>
           <p className="text-sm text-white/70">

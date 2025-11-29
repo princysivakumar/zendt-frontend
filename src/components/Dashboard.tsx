@@ -34,7 +34,7 @@ function DashboardDesktopNav() {
               ].join(" ")
             }
           >
-            <Icon className="h-5 w-5" strokeWidth={1.7} />
+            <Icon className="h-5 w-5" strokeWidth={1} />
             <span>{tab.label}</span>
           </NavLink>
         );
@@ -55,13 +55,13 @@ function DashboardMobileNav() {
               to={`/dashboard/${tab.to}`}
               className={({ isActive }) =>
                 [
-                  "inline-flex justify-center items-center px-3 py-2 gap-1 rounded-full border border-transparent transition focus-visible:outline-none",
-                  "hover:bg-[#484848] hover:text-white",
-                  isActive ? "bg-[#484848] text-white active-tab" : "text-slate-500",
+                  "inline-flex justify-center items-center px-3 py-2 gap-1 rounded-full border border-transparent font-extralight! transition focus-visible:outline-none",
+                  "hover:scale-105 hover:text-white",
+                  isActive ? " text-white active-tab" : "text-slate-500",
                 ].join(" ")
               }
             >
-              <Icon className="h-5 w-5" strokeWidth={1.7} />
+              <Icon className="h-6 w-6 " strokeWidth={1.7} />
             </NavLink>
           );
         })}

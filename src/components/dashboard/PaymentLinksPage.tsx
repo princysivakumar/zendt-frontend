@@ -1,7 +1,6 @@
 import { useState, type ReactNode } from "react";
 import BackButton from "./BackButton";
 import PageContainer from "./PageContainer";
-import { Link } from "react-router-dom";
 import ToggleCheckbox from "./ToggleCheckbox";
 
 const sortOptions = ["Newest first", "Oldest first", "Amount high to low"];

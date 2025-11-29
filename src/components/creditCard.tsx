@@ -27,17 +27,17 @@ const CreditCard: React.FC<CreditCardProps> = ({
         before:bg-no-repeat
         before:bg-size-[321px_262px]
         before:bg-position-[-100px_-110px]
-        before:opacity-60
+        before:opacity-90
         before:blur-2xl"
       >
 
         {brandLogo && (
           <img src={brandLogo} alt="Card brand" className="absolute left-6 top-6 h-6 w-auto" />
         )}
-        <div className="absolute bottom-8 right-6 text-[12px] w-5 font-semibold tracking-[0.3em] drop-shadow-[1px_1px_1px_rgba(0,0,0,0.3)]">
+        <div className="absolute bottom-6 right-6 text-[9px] w-5 font-semibold tracking-[0.3em] drop-shadow-[1px_1px_1px_rgba(0,0,0,0.3)]">
           {cardNumber}
         </div>
-        <div className="absolute bottom-8 left-6 text-[14px] tracking-[0.2em] drop-shadow-[1px_1px_1px_rgba(0,0,0,0.3)]">
+        <div className="absolute bottom-8 left-6 text-[9px] tracking-[0.2em] drop-shadow-[1px_1px_1px_rgba(0,0,0,0.3)]">
           {cardHolder.toUpperCase()}
         </div>
       </div>

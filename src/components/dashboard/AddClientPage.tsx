@@ -47,16 +47,17 @@ export default function AddClientPage() {
                 }}></div>
        <div className="flex justify-between w-full z-1"><BackButton /></div>
       </div>
+      <div className="bg-black p-6 shadow-[0_25px_45px_rgba(4,4,7,0.55)] space-y-6 rounded-t-[32px] relative z-2">
         <header className="space-y-1">
-          <h1 className="text-3xl font-semibold">Add Client</h1>
-          <p className="text-sm text-white/60">Add a client for easier access of payee in invoice / payment links creation.</p>
+          <h1 className="text-[18px] font-semibold">Add Client</h1>
+          <p className="text-[10px] text-white/60">Add a client for easier access of payee in invoice / payment links creation.</p>
         </header>
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 rounded-[36px] border border-white/10 bg-[#0f0f13]/90 p-6 shadow-[0_25px_45px_rgba(4,4,7,0.55)]"
+        className="space-y-6 shadow-[0_25px_45px_rgba(4,4,7,0.55)]"
       >
         <div className="flex justify-center items-center">
-          <div className="flex rounded-4xl border border-white/15 overflow-hidden w-full max-w-sm">
+          <div className="flex border border-white/15 rounded-[11px] bg-[#1E1E1E] overflow-hidden w-full max-w-sm">
             {(["individual", "company"] as const).map((option) => (
               <button
                 type="button"
@@ -78,7 +79,7 @@ export default function AddClientPage() {
             value={form.payerName}
             onChange={handleChange("payerName")}
             placeholder="Enter payer name"
-            className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+            className="w-full rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
           />
         </Field>
 
@@ -88,7 +89,7 @@ export default function AddClientPage() {
             value={form.email}
             onChange={handleChange("email")}
             placeholder="Enter email"
-            className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+            className="w-full rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
           />
         </Field>
 
@@ -98,7 +99,7 @@ export default function AddClientPage() {
             onChange={(event) =>
               setForm({ ...form, country: event.target.value })
             }
-            className="w-full"
+            className="w-full rounded-[11px]  bg-[#1E1E1E]! border-none"
           >
             <option value="" hidden>
               Select country
@@ -117,7 +118,7 @@ export default function AddClientPage() {
             onChange={(event) =>
               setForm({ ...form, purposeCode: event.target.value })
             }
-            className="w-full"
+            className="w-full rounded-[11px] bg-[#1E1E1E]! border-none"
           >
             <option value="" hidden>
               Select
@@ -136,7 +137,7 @@ export default function AddClientPage() {
             onChange={handleChange("address")}
             rows={3}
             placeholder="Enter payer address"
-            className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+            className="w-full rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
           />
         </Field>
 
@@ -147,7 +148,7 @@ export default function AddClientPage() {
                 value={form.companyName}
                 onChange={handleChange("companyName")}
                 placeholder="Enter company name"
-                className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+                className="w-full rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
               />
             </Field>
 
@@ -156,7 +157,7 @@ export default function AddClientPage() {
                 value={form.companyWebsite}
                 onChange={handleChange("companyWebsite")}
                 placeholder="Enter company website"
-                className="w-full rounded-3xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
+                className="w-full rounded-[11px] bg-[#1E1E1E] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none"
               />
             </Field>
           </>
@@ -175,15 +176,16 @@ export default function AddClientPage() {
           <p className="text-sm text-emerald-300">Client saved successfully.</p>
         )}
 
-        <div className="flex justify-center">
+        <div className="flex justify-end pb-14">
           <button
             type="submit"
-            className="rounded-[28px] border border-white/20 bg-white/10 py-2 text-sm text-white hover:bg-white/20 w-40"
+            className="rounded-[11px] bg-[#1E1E1E] py-2 text-sm text-white hover:bg-white/20 w-40"
           >
             Save
           </button>
         </div>
       </form>
+      </div>
     </PageContainer>
   );
 }
