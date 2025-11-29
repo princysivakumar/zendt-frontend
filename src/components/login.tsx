@@ -59,49 +59,43 @@ export default function Login() {
 
   return (
     <AuthBackground showNavigation={false}>
-      <div className="flex min-h-screen w-full items-center justify-center px-4 py-10">
+      <div className="flex min-h-screen w-full items-end justify-center pb-5">
         <div className="w-full max-w-xs mx-auto">
-          <h2 className="text-center text-2xl font-light mb-12">
+          <h2 className="text-center text-[20px] font-light mb-8">
             {phase === "credentials" ? "Login" : "Two-factor authentication"}
           </h2>
 
           {phase === "credentials" ? (
             <form onSubmit={handleCredentialsSubmit} className="space-y-6 mb-4">
               <div>
-                <label className="text-xs text-gray-400" htmlFor="email">
-                  Email
-                </label>
                 <input
                   id="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   type="email"
-                  placeholder="you@example.com"
-                  className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3 mt-2"
+                  placeholder="Username"
+                  className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-2 mt-2"
                 />
               </div>
 
               <div>
-                <label className="text-xs text-gray-400" htmlFor="password">
-                  Password
-                </label>
                 <input
                   id="password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   type="password"
                   placeholder="Password"
-                  className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3 mt-2"
+                  className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-2 mt-2"
                 />
               </div>
 
               {error && <p className="text-xs text-red-400">{error}</p>}
 
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex gap-4 items-center justify-between">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex items-center justify-between bg-black text-white border border-gray-600 rounded-full py-0.5 pl-2 pr-0.5 w-32 disabled:opacity-50"
+                  className="flex items-center justify-between bg-black text-white border border-gray-600 rounded-full py-0.5 pl-2 pr-0.5 w-24 disabled:opacity-50"
                 >
                   <span className="text-sm">{loading ? "..." : "Login"}</span>
                   <span className="w-7 h-7 bg-gray-300 text-black rounded-full flex items-center justify-center text-sm">
@@ -109,9 +103,9 @@ export default function Login() {
                   </span>
                 </button>
 
-                <div className="text-center sm:text-right text-xs text-gray-400">
+                <div className="shrink-0 text-center sm:text-right text-xs  text-white">
                   Don't have account?{" "}
-                  <Link to="/signup" className="text-white underline">
+                  <Link to="/signup" className="text-gray-400 underline">
                     Sign up
                   </Link>
                 </div>
@@ -128,7 +122,7 @@ export default function Login() {
                 type="text"
                 maxLength={6}
                 placeholder="123456"
-                className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+                className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-2"
               />
               {error && <p className="text-xs text-red-400">{error}</p>}
               <div className="flex justify-between items-center">
@@ -157,7 +151,7 @@ export default function Login() {
             </form>
           )}
 
-          <p className="text-center text-xs text-gray-500 mt-4">Need any help?</p>
+          <p className="text-center py-16 text-xs text-white mt-4">Need any help?</p>
         </div>
       </div>
     </AuthBackground>

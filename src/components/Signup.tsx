@@ -61,8 +61,9 @@ export default function Signup() {
 
   return (
     <AuthBackground showNavigation={false}>
-      <div className="w-full max-w-xs mx-auto">
-        <h2 className="text-center text-2xl font-light mb-12">
+      <div className="flex min-h-screen w-full items-end justify-center pb-5">
+        <div className="w-full max-w-xs mx-auto">
+        <h2 className="text-center text-[20px] font-light mb-8">
           {phase === "form" ? "Sign up" : "Verify your account"}
         </h2>
 
@@ -72,27 +73,27 @@ export default function Signup() {
               placeholder="First name"
               value={firstName}
               onChange={(event) => setFirstName(event.target.value)}
-              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-2"
             />
             <input
               placeholder="Last name"
               value={lastName}
               onChange={(event) => setLastName(event.target.value)}
-              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-2"
             />
             <input
               placeholder="E-mail"
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-2"
             />
             <input
               placeholder="Password"
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-2"
             />
 
             {error && <p className="text-xs text-red-400">{error}</p>}
@@ -101,7 +102,7 @@ export default function Signup() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex items-center justify-between bg-black text-white border border-gray-600 rounded-full py-0.5 pl-2 pr-0.5 w-32 disabled:opacity-50"
+                className="flex items-center justify-between bg-black text-white border border-gray-600 rounded-full py-0.5 pl-2 pr-0.5 w-24 disabled:opacity-50"
               >
                 <span className="text-sm">{loading ? "..." : "Signup"}</span>
                 <span className="w-7 h-7 bg-gray-300 text-black rounded-full flex items-center justify-center text-sm">
@@ -109,9 +110,9 @@ export default function Signup() {
                 </span>
               </button>
 
-              <div className="text-right text-xs text-gray-400">
+              <div className="text-right text-xs text-white">
                 Already have account?{" "}
-                <Link to="/login" className="text-white underline">
+                <Link to="/login" className="text-gray-400 underline">
                   Login
                 </Link>
               </div>
@@ -128,7 +129,7 @@ export default function Signup() {
               type="text"
               maxLength={6}
               placeholder="123456"
-              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-3"
+              className="w-full bg-transparent border-b border-gray-500 focus:border-gray-300 outline-none py-2"
             />
             {error && <p className="text-xs text-red-400">{error}</p>}
             <div className="flex justify-between items-center">
@@ -144,7 +145,7 @@ export default function Signup() {
               </button>
               <button
                 type="button"
-                className="text-xs text-gray-400 underline"
+                className="text-xs text-white underline"
                 onClick={() => {
                   setPhase("form");
                   setTwoFactorCode("");
@@ -156,8 +157,7 @@ export default function Signup() {
             </div>
           </form>
         )}
-
-        <p className="text-center text-xs text-gray-500 mt-4">Need any help?</p>
+      </div>
       </div>
     </AuthBackground>
   );

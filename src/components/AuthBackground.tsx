@@ -13,13 +13,13 @@ export default function AuthBackground({
   navigationContent,
 }: AuthBackgroundProps) {
   return (
-    <div className="relative min-h-screen w-full bg-linear-to-b overflow-hidden text-white flex flex-col items-center">
+    <div className="bg-black relative min-h-screen w-full bg-linear-to-b overflow-hidden text-white flex flex-col items-center">
       {showNavigation && (
-        <NavigationBar className="relative z-50 w-full max-w-4xl pt-8" centerContent={navigationContent} />
+        <NavigationBar className={` relative z-50 w-full max-w-4xl pt-8`} centerContent={navigationContent} />
       )}
       <div className="absolute top-20 right-8 w-[200px] h-[200px] border border-gray-700 opacity-10 rounded-3xl rotate-12" />
       <div
-        className="pointer-events-none absolute top-[-60px] md:top-[-65px] left-[-108px] md:left-[-108px] w-[360px] h-[472px] rotate-[7.308deg] opacity-90"
+        className="pointer-events-none absolute top-[-60px] md:top-[-65px] left-[90px] w-[360px] h-[472px] rotate-[7.308deg]"
         aria-hidden="true"
       >
         <img
